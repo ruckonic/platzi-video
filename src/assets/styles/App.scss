@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import "./Vars.scss";
+@import "./Media.scss";
 
 body{
     margin: 0;
-    background-color: #8f57fd;
-    font-family: 'Muli', sans-serif;
+    background-color: $main-color;
+    font-family: $theme-font;
 }
 *{
     box-sizing: border-box;
