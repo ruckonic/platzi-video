@@ -1,25 +1,22 @@
 import React, {useState, useEffect} from 'react'
+import { connect } from 'react-redux';
 
-import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer';
 
 
 import '../assets/styles/App.scss';
 
 import useInitialState from '../hooks/useInitialState';
 
-const API = 'http://localhost:3000/initialState';
 
-const App = () => {
+const Home = () => {
     const initialState = useInitialState(API);
     
     return(
-        <div className="App">
-            <Header />
+        <>
             <Search />
             {
                 initialState.mylist > 0 &&
@@ -49,10 +46,17 @@ const App = () => {
                     }
                 </Carousel>
             </Categories>
-            <Footer/>
-        </div>
+        </>
     );
 
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        myList: state.myList,
+        trends: state.trends,
+        originals: state.originals,
+    };
+};
+
+export default connect(mapStateToProps, null)(Home)
